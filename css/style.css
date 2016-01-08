@@ -1,0 +1,40 @@
+/*style.css*/
+* 
+{
+	box-sizing:border-box;
+}
+
+body
+{
+	background-color: #CCC;
+}
+
+.container
+{
+
+}
+
+#counter
+{
+	background-image: url("../images/catpic.jpg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 500px;
+	height: 500px;
+}
+
+#counter h1
+{
+	font-weight: bold;
+	text-align: center;
+	color: white;
+}
+
+#counter p
+{
+	font-size: 48px;
+	font-weight: bold;
+	padding-top: 25%;
+	padding-bottom: 25%;
+	text-align: center;
+}
