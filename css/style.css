@@ -2,6 +2,7 @@
 * 
 {
 	box-sizing:border-box;
+	border: 1px solid red;
 }
 
 body
@@ -14,27 +15,37 @@ body
 
 }
 
-#counter
+.counter
 {
-	background-image: url("../images/catpic.jpg");
+	/*background-image: url("../images/catpic.jpg");*/
 	background-size: contain;
 	background-repeat: no-repeat;
-	width: 500px;
-	height: 500px;
+	/*max-width: 250px;
+	max-height: 250px;*/
 }
 
-#counter h1
+.counter h1
 {
 	font-weight: bold;
 	text-align: center;
 	color: white;
 }
 
-#counter p
+.counter p
 {
 	font-size: 48px;
 	font-weight: bold;
 	padding-top: 25%;
 	padding-bottom: 25%;
 	text-align: center;
+}
+
+.counter#cat1
+{
+	background-image: url("../images/catpic.jpg");
+}
+
+.counter#cat2
+{
+	background-image: url("../images/catpic2.jpg");
 }
