@@ -1,8 +1,8 @@
 /*style.css*/
 * 
 {
-	/*box-sizing:border-box;
-	border: 1px solid red;*/
+	box-sizing:border-box;
+	border: 1px solid red;
 }
 
 body
@@ -48,5 +48,9 @@ img
 	left: 50%;
 	max-width: 256px;
 	margin-bottom: 0px;
+}
+
+.catlist{
+	float: right;
 }
 
