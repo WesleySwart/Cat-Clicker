@@ -4,12 +4,12 @@ $(function(){
 	intCounter2 = 0;
 });
 
-$('#cat1 p').click(function(e){
+$('#cat1 img, #cat1 p').click(function(e){
 	intCounter1++;
-	$(this).html( intCounter1.toString());
+	$('#cat1 p').html( intCounter1.toString());
 });
 
-$('#cat2 p').click(function(e){
+$('#cat2 img, #cat2 p').click(function(e){
 	intCounter2++;
-	$(this).html(intCounter2.toString());
+	$('#cat2 p').html( intCounter2.toString());
 });
