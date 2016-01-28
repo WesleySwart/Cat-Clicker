@@ -1,11 +1,14 @@
 //main.js
 //Notes//
 /*
-*	Get image list array from /images
-*	Show list of images in sidebar
-*	Display clicked sidebar image in viewer
+*	Get image list array from /images -- .ajax request
+*	Show list of images in sidebar -- catlist
+*	Display clicked sidebar image in viewer -- working, needs formatting
 *	Display counter on cat image in viewer when clicked
 *	Viewer image caption
+*	Add random name to cat and display
+*	Add cat objects to catlistArray
+* 	Code cleanup (remove unncesseary or old functions/styles/etc)
 */
 
 //Orig script//
@@ -43,7 +46,7 @@ function loadData(){
 				//Do something
 				//$("body").append("<img src='" + folder + val +"'>");
 				catListArray.push("cat:<img src='" + folder + val +"'>");
-				$('.catlist').append("<li><img src='" + folder + val +"'></li>")
+				$('.catlist').append("<li class='catItem'><img src='" + folder + val +"'></li>")
 			}
 		});
 	}
@@ -63,14 +66,22 @@ var cat = {
 }
 
 function randomNameGenerator(){
-	var names = [];
+	var names = ["Ben","Jerry","Buddy","Sebastian","Grumpy"];
+
+	var name = Math.floor((Math.random() * names.length) + 1);
+	
+	return name;
 }
 
-$('.catlist.li.img').click(function(e){
-	console.log('clicked cat in sidebar');
-	console.log(this);
-	$('.viewer').append(this);
-});
+//Show cat clicked in sidebar in viewer
+//Event delegation bubbles up to catlist class
+$('.catlist').on('click', 'li', function(){
+	console.log('Cat item clicked in sidebar');
+	console.log($(this).html());
+	var that = $(this).html();
+	$('.viewer').html("");
+	$('.viewer').append(that);
+})
 
 //Sample code
 /*
