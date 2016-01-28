@@ -27,24 +27,7 @@ li
 
 }
 
-.counter
-{
-	background-size: contain;
-	background-repeat: no-repeat;
-	max-height: 323px;
-	position: relative;
-}
-
-.counter h2
-{
-	color: blue;
-}
-
-.counter img
-{
- z-index: -1;
-}
-.counter p
+#counter
 {
 	font-size: 48px;
 	font-weight: bold;
@@ -53,7 +36,6 @@ li
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	max-width: 256px;
 	margin-bottom: 0px;
 }
 
@@ -79,9 +61,23 @@ li
 }
 
 .viewer{
-
+	position: relative;
 }
 
-.viewer img{
+.viewer h2
+{
+	color: blue;
+	text-align: center;
+}
 
+.viewer img
+{
+ 	height: 200px;
+ 	width: 200px;
+ 	z-index: -1;
+ 	max-width: 100%;
+ 	max-height: 100%;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	display: block;
 }

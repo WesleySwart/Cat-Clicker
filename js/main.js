@@ -11,25 +11,10 @@
 * 	Code cleanup (remove unncesseary or old functions/styles/etc)
 */
 
-//Orig script//
-/*$(function(){
-	intCounter1 = 0;
-	intCounter2 = 0;
-});
-
-$('#cat1 img, #cat1 p').click(function(e){
-	intCounter1++;
-	$('#cat1 p').html( intCounter1.toString());
-});
-
-$('#cat2 img, #cat2 p').click(function(e){
-	intCounter2++;
-	$('#cat2 p').html( intCounter2.toString());
-});*/
-
 //New Script//
 $(function(){
 	loadData();
+	intCounter = 0;
 });
 
 function loadData(){
@@ -44,19 +29,12 @@ function loadData(){
 		$(data).find("a").attr("href", function (i, val){
 			if(val.match(/\.jpg|\.png|\.gif/)){
 				//Do something
-				//$("body").append("<img src='" + folder + val +"'>");
-				catListArray.push("cat:<img src='" + folder + val +"'>");
-				$('.catlist').append("<li class='catItem'><img src='" + folder + val +"'></li>")
+				//catListArray.push("cat:<img src='" + folder + val +"'>");
+				$('.catlist').append("<li class='catItem'><img src='" + folder + val +"'alt='"+randomNameGenerator()+"'></li>")
 			}
 		});
 	}
 	});
-
-	/*for (var i; i <= catListArray.length; i++){
-		var catItem = catListArray[i];
-		$('.catList').append("<li><img src='" + folder + val +"'></li>")
-
-	}*/
 }
 
 var cat = {
@@ -65,12 +43,27 @@ var cat = {
 	caption: ""
 }
 
+//TODO: Getting undefined for some names; look at random calculation
 function randomNameGenerator(){
-	var names = ["Ben","Jerry","Buddy","Sebastian","Grumpy"];
+	var names = ["Ben","Jerry","Buddy","Sebastian","Grumpy","Melon","Thumper","Chester","Mr. Boojangles"];
+	var n = Math.floor((Math.random() * names.length - 1) + 1);
+	var altArray = [];
 
-	var name = Math.floor((Math.random() * names.length) + 1);
-	
-	return name;
+	console.log(names[n].toString());
+	//Push alt image attributes (cat name) to array
+	if(altArray.length < 5){
+		$('.catItem img').each(function(i){
+		altArray.push($(this).attr("alt"));
+		});
+	}
+	//Run again if name already exists in list of cat itmes to prevent duplicate names
+	if($.inArray(names[n], altArray) != -1){
+		console.log("Cat name already exists! Try again.")
+		randomNameGenerator();
+	}
+	else{
+		return names[n];
+	}
 }
 
 //Show cat clicked in sidebar in viewer
@@ -78,9 +71,17 @@ function randomNameGenerator(){
 $('.catlist').on('click', 'li', function(){
 	console.log('Cat item clicked in sidebar');
 	console.log($(this).html());
-	var that = $(this).html();
+	var pic = $(this).html();
 	$('.viewer').html("");
-	$('.viewer').append(that);
+	intCounter = 0;
+	$('.viewer').html("<h2>" + $(pic).first().attr("alt") + "</h2>" + pic + "<p id='counter'></p>")
+})
+
+//Show number of clicks on cat in viewer
+$('.viewer').on('click', 'img', function(){
+	console.log('Viewer img clicked');
+	intCounter++;
+	$('#counter').html( intCounter.toString());
 })
 
 //Sample code
