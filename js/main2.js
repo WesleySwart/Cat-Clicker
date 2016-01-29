@@ -1,25 +1,14 @@
-//main.js
-//Notes//
-/*
-*	Get image list array from /images -- .ajax request
-*	Show list of images in sidebar -- catlist
-*	Display clicked sidebar image in viewer -- working, needs formatting
-*	Display counter on cat image in viewer when clicked
-*	Viewer image caption
-*	Add random name to cat and display
-*	Add cat objects to catlistArray
-* 	Code cleanup (remove unncesseary or old functions/styles/etc)
-*
-*	Use closer ()
-*	Load data into cat obj and use from there
-*/
+//main2.js
 
-//New Script//
+//Load data into cat object
+
 $(function(){
 	loadData();
-	intCounter = 0;
-	altArray = [];
-});
+	var intCounter = 0;
+	var altArray = [];
+	var cat = {};
+	var catArray = [];
+})();
 
 function loadData(){
 	
@@ -34,20 +23,18 @@ function loadData(){
 			if(val.match(/\.jpg|\.png|\.gif/)){
 				//Do something
 				//catListArray.push("cat:<img src='" + folder + val +"'>");
-				$('.catlist').append("<li class='catItem'><img src='" + folder + val +"'alt='"+randomNameGenerator()+"'></li>")
+				//$('.catlist').append("<li class='catItem'><img src='" + folder + val +"'alt='"+randomNameGenerator()+"'></li>")
+
+				//Create cat object and push to array
+				cat.name = ;
+				cat.img = "<img src='" + folder + val +"'alt='"+randomNameGenerator()+"'>";
+				cat.caption = ;
 			}
 		});
 	}
 	});
 }
 
-var cat = {
-	name: "",
-	img: "",
-	caption: ""
-}
-
-//TODO: Getting undefined for some names; look at random calculation
 function randomNameGenerator(){
 	var names = ["Ben","Jerry","Buddy","Sebastian","Grumpy","Melon","Thumper","Chester","Mr. Boojangles"];
 	var n = Math.floor((Math.random() * names.length - 1) + 1);
@@ -64,6 +51,16 @@ function randomNameGenerator(){
 		altArray.push(names[n]);
 		return names[n];
 	}
+}
+
+//Loop through catArray and store caption in cat.caption for each obj in array
+function captionGenerator(){
+	var caption = '';
+	$.each(catArray, function(name, value){
+		caption = 'This is ' + value +'.' ' See ' + value + ' run. Run, ' + value + ',run.'
+		catArray[name].caption = caption;
+	});
+
 }
 
 //Show cat clicked in sidebar in viewer
@@ -83,31 +80,3 @@ $('.viewer').on('click', 'img', function(){
 	intCounter++;
 	$('#counter').html( intCounter.toString());
 })
-
-//Sample code
-/*
-// clear the screen for testing
-document.body.innerHTML = '';
-
-var nums = [1,2,3];
-
-// Let's loop over the numbers in our array
-for (var i = 0; i < nums.length; i++) {
-
-    // This is the number we're on...
-    var num = nums[i];
-
-    // We're creating a DOM element for the number
-    var elem = document.createElement('div');
-    elem.textContent = num;
-
-    // ... and when we click, alert the value of `num`
-    elem.addEventListener('click', (function(numCopy) {
-        return function() {
-            alert(numCopy);
-        };
-    })(num));
-
-    document.body.appendChild(elem);
-};
-*/
