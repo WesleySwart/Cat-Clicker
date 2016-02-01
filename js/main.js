@@ -1,4 +1,6 @@
-//main.js
+//main.js 
+// OLD
+
 //Notes//
 /*
 *	Get image list array from /images -- .ajax request

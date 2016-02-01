@@ -1,4 +1,13 @@
 /*style.css*/
+
+/*
+* TODO:
+* counter needs formatting
+* main viewer needs formatting
+* sidebar img needs top/bottom padding
+* enlarge main viewer pic
+*/
+
 * 
 {
 	box-sizing:border-box;
@@ -60,6 +69,10 @@ li
 	width: 100%;
 }
 
+#catIndex{
+	display: none;
+}
+
 .viewer{
 	position: relative;
 }
@@ -80,4 +93,9 @@ li
  	margin-left: auto;
  	margin-right: auto;
  	display: block;
+}
+
+#caption{
+	text-align: center;
+	font-weight: 14px;
 }
